@@ -159,7 +159,7 @@ public class LocalStack extends Stack {
         return Cluster.Builder.create(this, "PatientManagementCluster")
                 .vpc(vpc)
                 .defaultCloudMapNamespace(CloudMapNamespaceOptions.builder()
-                        .name("patient-managemet.local")
+                        .name("patient-management.local")
                         .build())
                 .build();
     }
@@ -235,7 +235,7 @@ public class LocalStack extends Stack {
                 ContainerDefinitionOptions.builder()
                         .image(ContainerImage.fromRegistry("api-gateway"))
                         .environment(Map.of("SPRING_PROFILES_ACTIVE", "prod",
-                                "AUTH_SERVICE_URL", " http://host.docker.internal:4005"))
+                                "AUTH_SERVICE_URL", "http://host.docker.internal:4005"))
                         .portMappings(List.of(4004).stream()
                                 .map(port -> PortMapping.builder()
                                         .containerPort(port)
